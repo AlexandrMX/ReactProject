@@ -1,8 +1,9 @@
 import React from 'react';
+import classes from './content.module.css';
 
 const Content = () => {
     return (
-        <div className='app-content'>
+        <div className={classes.content}>
             <div>
                 <img alt='im' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuSH87jjzGQzTZL9A3sen6KBrdnQrHIwQpE9fjlehHwaHtVC3NCw'/>
             </div>
@@ -17,11 +18,11 @@ const Content = () => {
                 <div>
                     New posts
                 </div>
-                <div>
-                    <div>
+                <div >
+                    <div className={classes.item}>
                         post 1
                     </div>
-                    <div>
+                    <div className={classes.item}>
                         post 2
                     </div>
 
