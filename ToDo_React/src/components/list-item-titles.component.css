@@ -1,0 +1,28 @@
+.del_btn_title {
+    width: 7%;
+    margin: 10px;
+}
+
+.item_container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border: 1px solid black;
+    width: 90%;
+}
+
+.task_name_title {
+    width: 25%;
+    padding: 0 15px;
+    list-style-type: none;
+}
+.task_title {
+    width: 40%;
+    padding: 0 15px;
+    list-style-type: none;  
+}
+.task_date {
+    width: 10%;
+    padding: 0 15px;
+    list-style-type: none;  
+}

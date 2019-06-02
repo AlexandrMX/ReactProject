@@ -1,0 +1,15 @@
+.heading {
+    color:forestgreen;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 54px;
+    text-align: center;
+    font-weight: normal;
+}
+.heading_smal {
+    font-family: "Arial, Helvetica", sans-serif;
+    font-size: 24px;
+    color: black;
+    font-weight: normal;
+    display: inline-flex;
+    margin-bottom: 10px;
+}
