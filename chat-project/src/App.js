@@ -3,6 +3,7 @@ import React from 'react';
 import Header from './components/Header/header';
 import Navbar from './components/Navbar/navbar';
 import Content from './components/Content/content';
+import dbRef from './dbRef';
 
 import Login from './components/Login/login';
 
