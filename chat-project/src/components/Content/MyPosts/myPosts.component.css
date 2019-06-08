@@ -1,0 +1,11 @@
+.profile {
+    width: 300px;
+    vertical-align: center;
+}
+.profile  img {
+    display: inherit;
+    width: 300px;
+}
+.dv {
+    vertical-align: center;
+}

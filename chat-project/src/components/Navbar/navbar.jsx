@@ -1,5 +1,5 @@
 import React from 'react';
-import Profile from './profile'
+import Profile from '../Profile/profile'
 import classes from './navbar.module.css';
 
 const Navbar = () => {

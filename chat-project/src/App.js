@@ -1,8 +1,8 @@
 import React from 'react';
 // import Logo from './components/render-logo';
-import Header from './components/header';
-import Navbar from './components/navbar';
-import Content from './components/content';
+import Header from './components/Header/header';
+import Navbar from './components/Navbar/navbar';
+import Content from './components/Content/content';
 
 import './App.css';
 
@@ -14,6 +14,7 @@ const App = () =>  {
         {/*<div><Logo/></div>*/}
         <Navbar/>
         <Content/>
+
 
     </div>
   );
