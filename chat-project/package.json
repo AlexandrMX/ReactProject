@@ -5,10 +5,15 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+<<<<<<< HEAD
     "react-redux": "^7.0.3",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
+=======
+    "react-scripts": "3.0.1",
+    "firebase": "^6.0.4"
+>>>>>>> f9f711036f8bfa82eab70ca8c74433a6c15ed01c
   },
   "scripts": {
     "start": "react-scripts start",
