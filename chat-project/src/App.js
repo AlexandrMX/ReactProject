@@ -1,11 +1,11 @@
 import React from 'react';
-// import Logo from './components/render-logo';
+
 import Header from './components/Header/header';
 import Navbar from './components/Navbar/navbar';
 import Content from './components/Content/content';
 import dbRef from './dbRef';
-
 import Login from './components/Login/login';
+
 
 import './App.css';
 
@@ -18,7 +18,7 @@ const App = () =>  {
 
         <Login/>
         <Header/>
-        {/*<div><Logo/></div>*/}
+        <div><Logo/></div>
         <Navbar/>
         <Content/>
 
