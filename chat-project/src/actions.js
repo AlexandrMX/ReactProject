@@ -1,5 +1,16 @@
 // import { generate } from 'shortid';
-// import dbRef from './dbRef';
+import dbRef from './dbRef';
+// import firebase from 'firebase';
+
+
+export const authDone = ({ uid, email }) => ({
+    type: 'AUTH_DONE',
+    user: { uid, email }
+  });
+
+
+
+
 
 export const onInputChange = e => ({
     type: 'ON_INPUT_CHANGE',

@@ -5,7 +5,7 @@
   margin: 0 auto;
 
   grid-template-areas:
-    "header login"
+    "header header"
     "nav content ";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;

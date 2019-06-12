@@ -1,16 +1,16 @@
 const initialState = {
     // items: [],
-    username: 'test',
-    password: 'test',
+    username: 'energizerrtu@gmail.com',
+    password: 'qwerty12345',
     user: null
 };
 
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        // case 'AUTH_DONE': {
-        //     return { ...state, user: action.user };
-        // }
+        case 'AUTH_DONE': {
+            return { ...state, user: action.user };
+        }
         case 'ON_INPUT_CHANGE': {
             const { inputValue } = action;
 

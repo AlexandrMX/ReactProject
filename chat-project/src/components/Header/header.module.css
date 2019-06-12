@@ -1,9 +1,14 @@
 .header {
     grid-area: header;
     background-color: chartreuse;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+
 }
 
 .header img {
     height: 35px;
     width: 50px;
 }
+
