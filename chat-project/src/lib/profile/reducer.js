@@ -2,11 +2,12 @@ const initialState = {
     // items: [],
     username: 'energizerrtu@gmail.com',
     password: 'qwerty12345',
-    user: null
+    user: null,
+    tempTestId: 'user_id_02'
 };
 
 
-const reducer = (state = initialState, action) => {
+const profile = (state = initialState, action) => {
     switch (action.type) {
         case 'AUTH_DONE': {
             return { ...state, user: action.user };
@@ -31,4 +32,4 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-export default reducer;
+export default profile;

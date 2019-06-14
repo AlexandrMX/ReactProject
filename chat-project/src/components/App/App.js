@@ -1,16 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import Header from './components/Header/header';
-import Navbar from './components/Navbar/navbar';
-import Content from './components/Content/content';
-import reducer from './reducer';
-import dbRef from './dbRef';
-
-const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+import Header from '../Header/header';
+import Navbar from '../Navbar/navbar';
+import Content from '../Content/content';
+import dbRef from '../../lib/dbRef';
+import store from '../../lib/store';
 
 dbRef
   .once('value')
@@ -29,8 +23,5 @@ const App = () => {
     </Provider>
   );
 }
-
-
-
 
 export default App;

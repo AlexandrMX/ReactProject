@@ -1,6 +1,12 @@
-// import { generate } from 'shortid';
-import dbRef from './dbRef';
+import dbRef from '../dbRef';
+import {addChat} from '../chatList/actions'
 // import firebase from 'firebase';
+
+export const runLogin = ({ username, password }) => ({ getState, dispatch }) =>{
+    const userId = getState().profile.tempTestId;
+    dispatch(addChat(userId));
+    return {type: "RUN_LOGIN"}
+}
 
 
 export const authDone = ({ uid, email }) => ({
