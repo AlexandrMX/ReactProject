@@ -1,4 +1,5 @@
 import dbRef from '../dbRef';
+import {setActiveChat} from '../activeChat/actions'
 
 export const addChat = (userId) => ({ dispatch }) => {
     const createChat = (chat_id) => {
@@ -22,4 +23,9 @@ export const addChat = (userId) => ({ dispatch }) => {
 
         );
     return { type: 'LISTEN_ADD_CHAT' }
+};
+
+export const chatSelect = (chat) => ({ dispatch }) => {
+    dispatch(setActiveChat(chat));
+    return { type: 'SELEC_CHAT' }
 };

@@ -1,16 +1,25 @@
 import React from "react";
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { chatSelect} from "../../../../lib/chatList/actions";
 
-const Chat = ({ chat}) => {
+const Chat = ({ chat, onChatSelect }) => {
     return (
         <li className="chat">
-            <span>{chat.id}</span>
+            <span onClick={onChatSelect(chat)}>{chat.id}</span>
         </li>
     )
 }
 
 Chat.propTypes = {
-    item: PropTypes.object
+    chat: PropTypes.object,
+    onChatSelect: PropTypes.func
 };
 
-export default Chat;
+
+const mapDispatchToProps = dispatch => {
+    return { onChatSelect: (c) => () => dispatch(chatSelect(c)) }
+};
+
+
+export default connect(null, mapDispatchToProps)(Chat);

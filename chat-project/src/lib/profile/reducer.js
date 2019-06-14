@@ -3,7 +3,7 @@ const initialState = {
     username: 'energizerrtu@gmail.com',
     password: 'qwerty12345',
     user: null,
-    tempTestId: 'user_id_02'
+    id: 'user_id_02'
 };
 
 

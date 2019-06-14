@@ -3,7 +3,7 @@ import {addChat} from '../chatList/actions'
 // import firebase from 'firebase';
 
 export const runLogin = ({ username, password }) => ({ getState, dispatch }) =>{
-    const userId = getState().profile.tempTestId;
+    const userId = getState().profile.id;
     dispatch(addChat(userId));
     return {type: "RUN_LOGIN"}
 }
