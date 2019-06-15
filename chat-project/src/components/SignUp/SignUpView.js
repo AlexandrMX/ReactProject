@@ -1,4 +1,5 @@
 import React from "react";
+import { Input, Button } from 'reactstrap';
 
 const SignUpView = ({ onSubmit }) => {
   return (
@@ -6,30 +7,26 @@ const SignUpView = ({ onSubmit }) => {
       <h1>Sign up</h1>
       <form onSubmit={onSubmit}>
         <label>
-          Display name
-          <input
+          <Input
             name="display_name"
             type="text"
-            placeholder="Display name"
+            placeholder="username"
           />
         </label>
         <label>
-          Email
-          <input
-            name="email"
+          <Input
             type="email"
-            placeholder="Email"
+            placeholder="email"
           />
         </label>
         <label>
-          Password
-          <input
+          <Input
             name="password"
             type="password"
-            placeholder="Password"
+            placeholder="password"
           />
         </label>
-        <button>Sign Up</button>
+        <Button color="primary">Sign Up</Button>
       </form>
     </div>
   );
