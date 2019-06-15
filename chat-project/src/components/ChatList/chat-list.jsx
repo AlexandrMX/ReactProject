@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Chat from './Chat/chat';
+import Chat from '../Chat/chat';
 
 const ChatList = ({ chatList }) => {
     return (
@@ -10,15 +10,15 @@ const ChatList = ({ chatList }) => {
                 <Chat key={`chat-${index}`} chat={chat} />
             ))}
         </ul>
-    )
-}
+    );
+};
 
 ChatList.propTypes = {
     items: PropTypes.oneOfType([PropTypes.array])
 };
 
 const mapStateToProps = state => {
-    return { chatList: state.chatList }
+    return { chatList: state.chatList };
 };
 
 export default connect(mapStateToProps)(ChatList);

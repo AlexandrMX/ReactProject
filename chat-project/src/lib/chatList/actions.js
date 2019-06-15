@@ -1,15 +1,15 @@
 import dbRef from '../dbRef';
-import {setActiveChat} from '../activeChat/actions'
+import { setActiveChat } from '../chat/actions';
 
 export const addChat = (userId) => ({ dispatch }) => {
-    const createChat = (chat_id) => {
+    const createChat = (chat_id, chat_members) => {
         dbRef
             .child(`chats/${chat_id}`)
             .once('value')
             .then(d => d.val())
             .then(d => {
-                dispatch({ type: 'ADD_CHAT', chat: d , id: chat_id})
-            })
+                dispatch({ type: 'ADD_CHAT', chat: {...d, members: chat_members }, id: chat_id });
+            });
     };
     dbRef
         .child('members')
@@ -17,15 +17,15 @@ export const addChat = (userId) => ({ dispatch }) => {
             const chat_id = d.key;
             const chat_members = d.val();
             if (chat_members[userId]) {
-                createChat(chat_id);
+                createChat(chat_id,chat_members);
             }
         }
 
         );
-    return { type: 'LISTEN_ADD_CHAT' }
+    return { type: 'LISTEN_ADD_CHAT' };
 };
 
 export const chatSelect = (chat) => ({ dispatch }) => {
     dispatch(setActiveChat(chat));
-    return { type: 'SELEC_CHAT' }
+    return { type: 'SELECT_CHAT' };
 };

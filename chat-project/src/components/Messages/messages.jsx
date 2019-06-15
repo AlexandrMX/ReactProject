@@ -16,15 +16,15 @@ const Messages = ({ messages, currentUserId }) => {
             />
             <div className="Message-content">
               <div className="username">
-                {user.displayName + ', ' + (new Date(message.timestamp)).toString()}
-                </div>
+                <b>{user.displayName}</b>{' ' + (new Date(message.timestamp)).toLocaleString()}
+              </div>
               <div className="text">{text}</div>
-                </div>
+            </div>
           </li>
-    );
+        );
       }) : null}
     </ul>
   );
-}
+};
 
 export default Messages;
