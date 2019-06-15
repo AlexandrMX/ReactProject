@@ -12,7 +12,6 @@ const Login = ({ onLoginClick }) => {
     const [password, setPassword] = useState('');
 
     return (
-<<<<<<< HEAD
         <div>
             <h1 className={classes.login_title}>Login</h1>
 
@@ -30,7 +29,7 @@ const Login = ({ onLoginClick }) => {
                     placeholder="password"
                 />
                 <br />
-                <Button color="primary" onClick={onLoginClick(username, password)}>Login</button>
+                <Button color="primary" onClick={onLoginClick(username, password)}>Login</Button>
             </div>
         </div>
     );
