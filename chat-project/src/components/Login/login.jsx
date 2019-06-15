@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import {  addTask , onInputChange} from '../../actions';
+import { authUser, onInputChange, setUsername, setPassword } from '../../lib/profile/actions';
+import { runLogin } from '../../lib/profile/actions';
 import classes from './login.module.css';
 import PropTypes from 'prop-types';
-import firebase from 'firebase';
 
-const Login = () => {
+
+const Login = ({ onLoginClick }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -23,22 +24,29 @@ const Login = () => {
                 placeholder="password"
             />
             <br />
-            <button onClick={() => addTask(username, password)}>Login</button>
+            <button onClick={onLoginClick(username, password)}>Login</button>
         </div>
     );
-   
+
 }
-Login.propTypes = {
-    onInputChange: PropTypes.func,
-    addTask: PropTypes.func,
-    username: PropTypes.string.isRequired,
-    password:PropTypes.string.isRequired
+// Login.propTypes = {
+//     onInputChange: PropTypes.func,
+//     authUser: PropTypes.func,
+//     username: PropTypes.string.isRequired,
+//     password: PropTypes.string.isRequired
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onLoginClick: (username, password) => () => dispatch(authUser(username, password)),
+    }
 };
+
 
 export default connect(
     state => ({
         username: state.username,
         password: state.password
     }),
-    { onInputChange, addTask }
+     mapDispatchToProps
+    
 )(Login);

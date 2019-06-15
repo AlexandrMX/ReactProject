@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import firebase from 'firebase';
-import dbRef from '../../dbRef';
+import dbRef from '../../lib/dbRef';
 
 import SignUpView from "./SignUpView";
 
