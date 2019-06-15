@@ -56,4 +56,3 @@ export const initialiseListeners = () => ({ dispatch }) => {
 
     return { type: 'INITIALISE_LISTENERS' };
 };
-
