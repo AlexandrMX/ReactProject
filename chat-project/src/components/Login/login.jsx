@@ -11,20 +11,25 @@ const Login = ({ onLoginClick }) => {
     const [password, setPassword] = useState('');
 
     return (
-        <div className={classes.login}>
-            <input
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-                placeholder="username"
-            />
-            <br />
-            <input
-                value={password}
-                onChange={e => setPassword(e.currentTarget.value)}
-                placeholder="password"
-            />
-            <br />
-            <button onClick={onLoginClick(username, password)}>Login</button>
+        <div>
+            <h1 className={classes.login_title}>Login</h1>
+
+            <div className={classes.login}>
+                <input
+                    value={username}
+                    onChange={e => setUsername(e.target.value)}
+                    placeholder="username"
+                />
+                <br />
+                <input
+                    value={password}
+                    type="password"
+                    onChange={e => setPassword(e.currentTarget.value)}
+                    placeholder="password"
+                />
+                <br />
+                <button onClick={onLoginClick(username, password)}>Login</button>
+            </div>
         </div>
     );
 
@@ -47,6 +52,6 @@ export default connect(
         username: state.username,
         password: state.password
     }),
-     mapDispatchToProps
-    
+    mapDispatchToProps
+
 )(Login);
