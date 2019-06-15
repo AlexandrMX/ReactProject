@@ -6,7 +6,7 @@ import { profileSelect } from "../../lib/profileList/actions";
 const Profile = ({ profile, onProfileSelect }) => {
     return (
         <li className="profile">
-            <span onClick={onProfileSelect(profile)}>{profile.id}</span>
+            <span onClick={onProfileSelect(profile)}>{profile.displayName}</span>
         </li>
     );
 };

@@ -4,13 +4,6 @@ import { addProfile } from '../profileList/actions';
 import firebase from 'firebase';
 import Cookie from 'js-cookie';
 
-export const runLogin = (username, password) => ({ getState, dispatch }) => {
-    getState().profile.id = username ? username : getState().profile.id; //dont do this, CHANGE ME
-    const userId = getState().profile.id;
-    dispatch(addChat(userId));
-    dispatch(addProfile(userId));
-    return { type: "RUN_LOGIN" };
-};
 
 export const authDone = ({ id, email }) => ({
     type: 'AUTH_DONE',
@@ -23,8 +16,8 @@ export const authUser = (username, password) => ({ dispatch }) => {
         .auth()
         .signInWithEmailAndPassword(username, password)
         .then(firebaseUser => {
-            console.log(firebaseUser.user, "PPPPPP")
             const { uid, email } = firebaseUser.user;
+
 
             Cookie.set('chat_user', uid);
             Cookie.set('chat_user_email', email);
@@ -35,20 +28,35 @@ export const authUser = (username, password) => ({ dispatch }) => {
 
     return { type: 'AUTH_USER' };
 };
-// export const setUsername = username =>  {
-//     return { type: 'SET_USERNAME', username };
-// }
 
-// export const setPassword = password => {
-//     return {type: 'SET_PASSWORD', password}
-// }
+export const getProfileInfo = (id) => ({ dispatch }) => {
+    dbRef
+        .child(`profiles/${id}`)
+        .once("value", e => {
+            const { displayName, avatar } = e.val();
+
+            dispatch({ type: 'ADD_PROFILE_INFO', profile: { displayName, avatar } });
+        })
+};
+
+export const logOut = () => ({ dispatch }) => {
+    firebase
+        .auth()
+        .signOut()
+        .then(() => {
+            Cookie.remove('todo_user');
+            Cookie.remove('todo_email');
+            dispatch({ type: 'LOGGED_OUT' });
+        })
+        .catch(error => dispatch({ type: 'LOGOUT_ERROR', error }));
+
+    return { type: 'LOGOUT_STARTED' };
+};
 
 export const initialiseListeners = () => ({ dispatch }) => {
     const uid = Cookie.get('chat_user');
     const email = Cookie.get('chat_user_email');
-    console.log ('!!!!!!', uid )
     if (uid) {
-        console.log ('????????', uid )
         dispatch(authDone({ id: uid, email }));
         dispatch(addChat(uid))
         dispatch(addProfile(uid))
@@ -56,3 +64,4 @@ export const initialiseListeners = () => ({ dispatch }) => {
 
     return { type: 'INITIALISE_LISTENERS' };
 };
+
