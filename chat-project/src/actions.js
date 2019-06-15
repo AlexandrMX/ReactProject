@@ -1,14 +1,38 @@
 // import { generate } from 'shortid';
 import dbRef from './dbRef';
-// import firebase from 'firebase';
+import firebase from 'firebase';
 
 
 export const authDone = ({ uid, email }) => ({
     type: 'AUTH_DONE',
     user: { uid, email }
-  });
+});
 
+export const authUser = ({ username, password }) => ({ dispatch }) => {
+    console.log(username, password)   
+    firebase
+        .auth()
+        .signInWithEmailAndPassword(username, password)
+        .then(firebaseUser => {
+            console.log( uid, email)
+            const { uid, email } = firebaseUser.user;
+           
+            // Cookie.set('chat_user', uid);
+            // Cookie.set('chat_user_email', email);
+            dispatch(authDone({ uid, email }));
+            return { uid, email };
+        })
+        // .then(() => dispatch(initialiseListeners()));
 
+    return { type: 'AUTH_USER' };
+};
+export const setUsername = username =>  {
+    return { type: 'SET_USERNAME', username };
+}
+
+export const setPassword = password => {
+    return {type: 'SET_PASSWORD', password}
+}
 
 
 
