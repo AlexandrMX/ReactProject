@@ -6,7 +6,7 @@ import { chatSelect } from "../../lib/chatList/actions";
 const Chat = ({ chat, onChatSelect }) => {
     return (
         <li className="chat">
-            <span onClick={onChatSelect(chat)}>{chat.id}</span>
+            <span onClick={onChatSelect(chat)}>{chat.title}</span>
         </li>
     );
 };

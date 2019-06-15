@@ -4,6 +4,7 @@ import { authUser, onInputChange, setUsername, setPassword } from '../../lib/pro
 import { runLogin } from '../../lib/profile/actions';
 import classes from './login.module.css';
 import PropTypes from 'prop-types';
+import { Input, Button } from 'reactstrap';
 
 
 const Login = ({ onLoginClick }) => {
@@ -11,24 +12,25 @@ const Login = ({ onLoginClick }) => {
     const [password, setPassword] = useState('');
 
     return (
+<<<<<<< HEAD
         <div>
             <h1 className={classes.login_title}>Login</h1>
 
             <div className={classes.login}>
-                <input
+                <Input
                     value={username}
                     onChange={e => setUsername(e.target.value)}
                     placeholder="username"
                 />
                 <br />
-                <input
+                <Input
                     value={password}
                     type="password"
                     onChange={e => setPassword(e.currentTarget.value)}
                     placeholder="password"
                 />
                 <br />
-                <button onClick={onLoginClick(username, password)}>Login</button>
+                <Button color="primary" onClick={onLoginClick(username, password)}>Login</button>
             </div>
         </div>
     );

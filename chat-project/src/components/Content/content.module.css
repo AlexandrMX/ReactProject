@@ -1,6 +1,5 @@
 .content {
     grid-area: content;
-    background-color: aliceblue;
 }
 
 .item {
@@ -8,4 +7,18 @@
 }
 .dv {
     display: block;
+}
+
+.left_side {
+	float:left; 
+	display:inline; 
+	width: 30%;
+	background-color: #f9f9f9;
+}
+
+
+.right_side {
+	float:left; 
+	display:inline; 
+	width: 70%;
 }

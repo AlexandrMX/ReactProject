@@ -7,13 +7,15 @@ import ActiveChat from '../ActiveChat/active-chat';
 const Content = () => {
     return (
         <div className={classes.content}>
-            <div style={{border: '2px solid black'}}>
-                <ChatList />
+            <div className={classes.left_side}>
+                <div style={{border: '1px solid black'}}>
+                    <ChatList />
+                </div>
+                <div style={{border: '1px solid black'}}>
+                    <ProfileList />
+                </div>
             </div>
-            <div style={{border: '2px solid black'}}>
-                <ProfileList />
-            </div>
-            <div style={{border: '2px solid black'}}>
+            <div className={classes.right_side}>
                 <ActiveChat />
             </div>
         </div>
