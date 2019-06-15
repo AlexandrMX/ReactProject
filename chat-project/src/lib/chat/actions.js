@@ -47,8 +47,7 @@ export const setActiveChat = (chat) => ({ getState, dispatch }) => {
             dbRef
                 .child(`profiles/${msg.user}`)
                 .once('value', d => {
-                    const user = d.val();
-                    user.id = d.key;
+                    const user = {...d.val(), id: d.key };
                     msg.user = user;
                     dispatch({ type: 'ADD_CHAT_MESSAGE', chatId: newChatId, msg, id: msg_id });
                 });
