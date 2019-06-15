@@ -1,26 +1,23 @@
 import React from 'react';
 import classes from './content.module.css';
-import Post from './MyPosts/myPosts';
+import ChatList from '../ChatList/chat-list';
+import ProfileList from '../ProfileList/profile-list';
+import ActiveChat from '../ActiveChat/active-chat';
 
 const Content = () => {
     return (
         <div className={classes.content}>
-            <div className={classes.dv}>
-                {/*<img alt='im'*/}
-                     {/*src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuSH87jjzGQzTZL9A3sen6KBrdnQrHIwQpE9fjlehHwaHtVC3NCw'/>*/}
+            <div style={{border: '2px solid black'}}>
+                <ChatList />
             </div>
-            <div>
-                {/*<img alt='imm' src=' https://justcreative.com/wp-content/uploads/2017/06/LogoCollection.jpg'/>*/}
+            <div style={{border: '2px solid black'}}>
+                <ProfileList />
             </div>
-            <div>
-                ava + content
+            <div style={{border: '2px solid black'}}>
+                <ActiveChat />
             </div>
-            <Post/>
-
         </div>
-
-
-    )
+    );
 };
 
 export default Content;

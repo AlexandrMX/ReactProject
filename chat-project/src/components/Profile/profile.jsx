@@ -1,23 +1,25 @@
-import React from 'react';
-import classes from './profile.module.css';
+import React from "react";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { profileSelect } from "../../lib/profileList/actions";
 
-    const Profile = () => {
-     return (
-         <div >
-             <div className={classes.item}>
-                 <a href='google.com'>Profile</a>
-             </div>
-             <div className={classes.item}>
-                <a href='google.com'>Message</a>
-             </div>
-             <div className={classes.item}>
-                <a href='google.com'>News</a>
-            </div>
-             <div className={classes.item}>
-                <a href='google.com'>Music</a>
-            </div>
-         </div>
-    )
-}
+const Profile = ({ profile, onProfileSelect }) => {
+    return (
+        <li className="profile">
+            <span onClick={onProfileSelect(profile)}>{profile.id}</span>
+        </li>
+    );
+};
 
-export default Profile;
+Profile.propTypes = {
+    profile: PropTypes.object,
+    onProfileSelect: PropTypes.func
+};
+
+
+const mapDispatchToProps = dispatch => {
+    return { onProfileSelect: (p) => () => dispatch(profileSelect(p)) };
+};
+
+
+export default connect(null, mapDispatchToProps)(Profile);
