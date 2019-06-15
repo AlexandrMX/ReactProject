@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 
 // Your web app's Firebase configuration
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAFeBC41WBf6Qf3OAaF6UQ8cy80mcA4Xy8",
   authDomain: "chat-demo-ca46e.firebaseapp.com",
   databaseURL: "https://chat-demo-ca46e.firebaseio.com",
