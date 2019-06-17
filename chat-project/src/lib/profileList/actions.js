@@ -21,8 +21,10 @@ export const addProfile = (userId) => ({ dispatch }) => {
 };
 
 export const profileSelect = (profile) => ({ dispatch, getState }) => {
-    const userId_1 = getState().profile.id;
-    const userId_2 = profile.id;
+    const user_1 = getState().profile;
+    const userId_1 = user_1.id;
+    const user_2 = profile;
+    const userId_2 = user_2.id;
     dbRef
         .child('members')
         .once('value', d => {
@@ -32,7 +34,10 @@ export const profileSelect = (profile) => ({ dispatch, getState }) => {
                 if (Object.keys(members[key]).length === 2 && members[key][userId_1] && members[key][userId_2]) {
                     chat = {
                         id: key,
-                        members: members[key]
+                        members: {
+                            [userId_1]: user_1,
+                            [userId_2]: user_2
+                        }
                     };
                     break;
                 }
@@ -43,8 +48,8 @@ export const profileSelect = (profile) => ({ dispatch, getState }) => {
                     //dirty way to solve conflict on two users starting conversation at same time
                     id: userId_1 > userId_2 ? userId_1 + userId_2 : userId_2 + userId_1,
                     members: {
-                        [userId_1]: true,
-                        [userId_2]: true
+                        [userId_1]: user_1,
+                        [userId_2]: user_2
                     }
                 };
             }

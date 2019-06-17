@@ -11,20 +11,19 @@ const Messages = ({ messages, currentUserId }) => {
         const className = messageFromMe ? "Messages-message currentMember" : "Messages-message";
         return (
           <li key={message.id} className={className}>
-            <span
-              className="avatar"
-            //style={{ backgroundColor: user.color }}
-            />
+            <ProfileAvatar profile={user} style={{ size: 22 }} />
             <div className="Message-content">
               <div className="username">
-                <ProfileAvatar profile={user} style={{ size: 20 }} />
-                <b>{user.displayName}</b>{' ' + (new Date(message.timestamp)).toLocaleString()}
+                {user.displayName}
               </div>
               <div className="text">{text}</div>
+              <div className="date">
+                {(new Date(message.timestamp)).toLocaleString()}
+              </div>
             </div>
           </li>
         );
-      }) : null}
+      }) : <></>}
     </ul>
   );
 };

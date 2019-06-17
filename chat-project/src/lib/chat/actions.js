@@ -52,7 +52,10 @@ export const setActiveChat = (chat) => ({ getState, dispatch }) => {
         .child(`messages/${newChatId}`)
         .on('child_added', d => {
             const msg = { ...d.val(), id: d.key };
-            dispatch(getMemeberInfo(msg.user, { type: 'ADD_CHAT_MESSAGE', chatId: newChatId, msg }));
+            dispatch(getMemeberInfo(msg.user, { 
+                type: 'ADD_CHAT_MESSAGE', 
+                chatId: newChatId, msg 
+            }));
         });
     dbRef
         .child(`members/${newChatId}`)

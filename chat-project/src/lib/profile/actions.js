@@ -8,7 +8,7 @@ import Cookie from 'js-cookie';
 export const signUp = (display_name, email, password) => ({ dispatch }) => {
     try {
         firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
-            dispatch(setProfileInfo(user.user.uid, { 
+            dispatch(setProfileInfo(user.user.uid, {
                 displayName: display_name ? display_name : email,
                 userName: email
             }));
@@ -52,8 +52,8 @@ export const getProfileInfo = (id) => ({ dispatch }) => {
     dbRef
         .child(`profiles/${id}`)
         .once("value", e => {
-            const { displayName, avatar } = e.val();
-            dispatch({ type: 'ADD_PROFILE_INFO', profile: { displayName, avatar } });
+            const profile = e.val();
+            dispatch({ type: 'ADD_PROFILE_INFO', profile });
         });
     return { type: 'GET_PROFILE_INFO' };
 };
@@ -79,6 +79,7 @@ export const initialiseListeners = () => ({ dispatch }) => {
     const email = Cookie.get('chat_user_email');
     if (uid) {
         dispatch(authDone({ id: uid, email }));
+        dispatch(getProfileInfo(uid));
         dispatch(addChat(uid));
         dispatch(addProfile(uid));
     }

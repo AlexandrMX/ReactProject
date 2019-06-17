@@ -13,7 +13,7 @@
   color: white;
 }
 
-.Messages-list {
+.Messages-members{
   padding: 20px 0;
   max-width: 900px;
   width: 100%;
@@ -22,6 +22,7 @@
   padding-left: 0;
   flex-grow: 1;
   overflow: auto;
+  border-bottom: 1px solid black;
 }
 
 .Messages-message {
@@ -55,14 +56,6 @@
   display: block;
   color: gray;
   font-size: 14px;
-  font-weight: bold;
-  padding-bottom: 4px;
-}
-
-.Message-content > .date {
-  display: block;
-  color: gray;
-  font-size: 10px;
   padding-bottom: 4px;
 }
 

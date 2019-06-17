@@ -1,7 +1,7 @@
 const initialState = {
-    username: 'nergizerrtu@gmail.com',
-    password: 'qwerty12345',
-    user: null,
+    //username: 'nergizerrtu@gmail.com',
+    //password: 'qwerty12345',
+    email: null,
     avatar: "",
     displayName: 'NO_NAME',
     id: ''
