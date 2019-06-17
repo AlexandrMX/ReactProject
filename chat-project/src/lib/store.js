@@ -7,8 +7,22 @@ import { customMiddleware } from "./middelware";
 
 const composeEnhancers = (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
+const appReducer = combineReducers({
+    profile,
+    activeChat,
+    chatList,
+    profileList
+});
+const rootReducer = (state, action) => {
+    if (action.type === 'LOGGED_OUT') {
+        state = undefined;
+    }
+
+    return appReducer(state, action);
+};
+
 const store = createStore(
-    combineReducers({ profile, activeChat, chatList, profileList }),
+    rootReducer,
     //applyMiddleware(customMiddleware)
     composeEnhancers(applyMiddleware(customMiddleware))
 );

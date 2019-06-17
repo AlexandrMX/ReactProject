@@ -16,6 +16,9 @@ const profile = (state = initialState, action) => {
         case 'ADD_PROFILE_INFO': {
             return { ...state, ...action.profile };
         }
+        case 'LOGGED_OUT': {
+            return { uid: null };
+        }
 
         default:
             return state;

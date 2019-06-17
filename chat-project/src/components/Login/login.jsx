@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { authUser } from '../../lib/profile/actions';
 import classes from './login.module.css';
-import PropTypes from 'prop-types';
 import { Input, Button } from 'reactstrap';
 
 
