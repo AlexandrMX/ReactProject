@@ -8,12 +8,10 @@ import Cookie from 'js-cookie';
 export const signUp = (display_name, email, password) => ({ dispatch }) => {
     try {
         firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
-            dbRef.update({
-                [`/profiles/${user.user.uid}`]: {
-                    displayName: display_name ? display_name : email,
-                    userName: email
-                }
-            });
+            dispatch(setProfileInfo(user.user.uid, { 
+                displayName: display_name ? display_name : email,
+                userName: email
+            }));
             dispatch(authUser(email, password));
         });
 
@@ -35,16 +33,19 @@ export const authUser = (username, password) => ({ dispatch }) => {
         .signInWithEmailAndPassword(username, password)
         .then(firebaseUser => {
             const { uid, email } = firebaseUser.user;
-
-
             Cookie.set('chat_user', uid);
             Cookie.set('chat_user_email', email);
-
             return { uid, email };
         })
+        .then(({ uid }) => dispatch(setProfileInfo(uid, { status: 'active' })))
         .then(() => dispatch(initialiseListeners()));
 
     return { type: 'AUTH_USER' };
+};
+
+export const setProfileInfo = (id, profile) => () => {
+    dbRef.child(`/profiles/${id}`).update({ ...profile });
+    return { type: 'SET_PROFILE_INFO' };
 };
 
 export const getProfileInfo = (id) => ({ dispatch }) => {
@@ -52,18 +53,19 @@ export const getProfileInfo = (id) => ({ dispatch }) => {
         .child(`profiles/${id}`)
         .once("value", e => {
             const { displayName, avatar } = e.val();
-
             dispatch({ type: 'ADD_PROFILE_INFO', profile: { displayName, avatar } });
         });
+    return { type: 'GET_PROFILE_INFO' };
 };
 
-export const logOut = () => ({ dispatch }) => {
+export const logOut = () => ({ getState, dispatch }) => {
     firebase
         .auth()
         .signOut()
         .then(() => {
             Cookie.remove('chat_user');
             Cookie.remove('chat_email');
+            dispatch(setProfileInfo(getState().profile.id, { status: 'inactive' }));
             dispatch({ type: 'LOGGED_OUT' });
             dispatch(stopListeners());
         })
@@ -84,7 +86,7 @@ export const initialiseListeners = () => ({ dispatch }) => {
     return { type: 'INITIALISE_LISTENERS' };
 };
 
-export const stopListeners = () => {    
+export const stopListeners = () => {
     dbRef.off();
     dbRef.child('members').off();
     dbRef.child('profiles').off();
