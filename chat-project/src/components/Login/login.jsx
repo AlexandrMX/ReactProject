@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { authUser, onInputChange, setUsername, setPassword } from '../../lib/profile/actions';
-import { runLogin } from '../../lib/profile/actions';
+import { authUser } from '../../lib/profile/actions';
 import classes from './login.module.css';
 import PropTypes from 'prop-types';
 import { Input, Button } from 'reactstrap';
@@ -34,7 +33,7 @@ const Login = ({ onLoginClick }) => {
         </div>
     );
 
-}
+};
 // Login.propTypes = {
 //     onInputChange: PropTypes.func,
 //     authUser: PropTypes.func,
@@ -44,7 +43,7 @@ const Login = ({ onLoginClick }) => {
 const mapDispatchToProps = dispatch => {
     return {
         onLoginClick: (username, password) => () => dispatch(authUser(username, password)),
-    }
+    };
 };
 
 
