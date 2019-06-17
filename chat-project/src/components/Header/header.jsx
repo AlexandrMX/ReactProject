@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import classes from './header.module.css';
 import Login from '../Login/login';
-import Logout from '../Logout/logout'
+import Logout from '../Logout/logout';
 import SignUpContainer from '../SignUp/SignUpContainer';
 
 const Header = ({uid}) => {

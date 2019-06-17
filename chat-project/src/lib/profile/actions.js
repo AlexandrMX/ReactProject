@@ -6,10 +6,14 @@ import Cookie from 'js-cookie';
 
 
 export const signUp = (display_name, email, password) => ({ dispatch }) => {
-    console.log(display_name, email, password);
     try {
         firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
-            dbRef.update({ [`/profiles/${user.user.uid}`]: { displayName: display_name, userName: email } });
+            dbRef.update({
+                [`/profiles/${user.user.uid}`]: {
+                    displayName: display_name ? display_name : email,
+                    userName: email
+                }
+            });
             dispatch(authUser(email, password));
         });
 
@@ -61,6 +65,7 @@ export const logOut = () => ({ dispatch }) => {
             Cookie.remove('chat_user');
             Cookie.remove('chat_email');
             dispatch({ type: 'LOGGED_OUT' });
+            dispatch(stopListeners());
         })
         .catch(error => dispatch({ type: 'LOGOUT_ERROR', error }));
 
@@ -79,3 +84,9 @@ export const initialiseListeners = () => ({ dispatch }) => {
     return { type: 'INITIALISE_LISTENERS' };
 };
 
+export const stopListeners = () => {    
+    dbRef.off();
+    dbRef.child('members').off();
+    dbRef.child('profiles').off();
+    return { type: 'STOP_LISTENERS' };
+};

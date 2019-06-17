@@ -1,7 +1,7 @@
 import dbRef from '../dbRef';
 import { generate } from 'shortid';
 import { setActiveChat } from '../chat/actions';
-import stringToColour from '../util/stringToColour';
+import {stringToColour} from '../util/playWithColor';
 
 
 export const addProfile = (userId) => ({ dispatch }) => {
