@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { authUser } from '../../lib/profile/actions';
 import classes from './login.module.css';
+<<<<<<< HEAD
+=======
+import PropTypes from 'prop-types';
+import { Input, Button } from 'reactstrap';
+>>>>>>> 0d8c74e9abb31b773d131b24d27b77d84cb10bf7
 
 
 const Login = ({ onLoginClick }) => {
@@ -13,30 +18,39 @@ const Login = ({ onLoginClick }) => {
             <h1 className={classes.login_title}>Login</h1>
 
             <div className={classes.login}>
-                <input
+                <Input
                     value={username}
                     onChange={e => setUsername(e.target.value)}
                     placeholder="username"
                 />
                 <br />
-                <input
+                <Input
                     value={password}
                     type="password"
                     onChange={e => setPassword(e.currentTarget.value)}
                     placeholder="password"
                 />
                 <br />
-                <button onClick={onLoginClick(username, password)}>Login</button>
+                <Button color="primary" onClick={onLoginClick(username, password)}>Login</Button>
             </div>
         </div>
     );
 
+<<<<<<< HEAD
 }
+=======
+};
+// Login.propTypes = {
+//     onInputChange: PropTypes.func,
+//     authUser: PropTypes.func,
+//     username: PropTypes.string.isRequired,
+//     password: PropTypes.string.isRequired
+>>>>>>> 0d8c74e9abb31b773d131b24d27b77d84cb10bf7
 
 const mapDispatchToProps = dispatch => {
     return {
         onLoginClick: (username, password) => () => dispatch(authUser(username, password)),
-    }
+    };
 };
 
 

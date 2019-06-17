@@ -7,7 +7,8 @@ import { customMiddleware } from "./middelware";
 
 const store = createStore(
     combineReducers({profile, activeChat, chatList, profileList}),
-    compose(applyMiddleware(customMiddleware),  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+    applyMiddleware(customMiddleware)
+    //compose(applyMiddleware(customMiddleware),  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 
 );

@@ -2,12 +2,13 @@ import React from "react";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { profileSelect } from "../../lib/profileList/actions";
+import { ListGroupItem } from 'reactstrap';
 
 const Profile = ({ profile, onProfileSelect }) => {
     return (
-        <li className="profile">
+        <ListGroupItem className="profile">
             <span onClick={onProfileSelect(profile)}>{profile.displayName}</span>
-        </li>
+        </ListGroupItem>
     );
 };
 

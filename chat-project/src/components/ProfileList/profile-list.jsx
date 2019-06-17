@@ -2,14 +2,15 @@ import React from "react";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Profile from '../Profile/profile';
+import { ListGroup } from 'reactstrap';
 
 const ProfileList = ({ profileList }) => {
     return (
-        <ul className="profile-list">
-            {profileList.map((profile, index) => (
+        <ListGroup>
+			{profileList.map((profile, index) => (
                 <Profile key={`profile-${index}`} profile={profile} />
             ))}
-        </ul>
+        </ListGroup>
     );
 };
 

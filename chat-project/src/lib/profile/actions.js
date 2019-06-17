@@ -5,13 +5,27 @@ import firebase from 'firebase';
 import Cookie from 'js-cookie';
 
 
+export const signUp = (display_name, email, password) => ({ dispatch }) => {
+    console.log(display_name, email, password);
+    try {
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
+            dbRef.update({ [`/profiles/${user.user.uid}`]: { displayName: display_name, userName: email } });
+            dispatch(authUser(email, password));
+        });
+
+    } catch (error) {
+        alert(error);
+    }
+    return { type: 'SIGN_UP_START' };
+};
+
 export const authDone = ({ id, email }) => ({
     type: 'AUTH_DONE',
     user: { id, email }
 });
 
 export const authUser = (username, password) => ({ dispatch }) => {
-    console.log(username, password)
+    console.log(username, password);
     firebase
         .auth()
         .signInWithEmailAndPassword(username, password)
@@ -36,7 +50,7 @@ export const getProfileInfo = (id) => ({ dispatch }) => {
             const { displayName, avatar } = e.val();
 
             dispatch({ type: 'ADD_PROFILE_INFO', profile: { displayName, avatar } });
-        })
+        });
 };
 
 export const logOut = () => ({ dispatch }) => {
@@ -58,8 +72,8 @@ export const initialiseListeners = () => ({ dispatch }) => {
     const email = Cookie.get('chat_user_email');
     if (uid) {
         dispatch(authDone({ id: uid, email }));
-        dispatch(addChat(uid))
-        dispatch(addProfile(uid))
+        dispatch(addChat(uid));
+        dispatch(addProfile(uid));
     }
 
     return { type: 'INITIALISE_LISTENERS' };

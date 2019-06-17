@@ -1,6 +1,6 @@
 .header {
     grid-area: header;
-    background-color: chartreuse;
+    background-color: #f9f9f9;
     display: flex;
     justify-content: space-between;
     align-self: center;
