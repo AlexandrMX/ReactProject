@@ -22,10 +22,19 @@ const activeChat = (state = defChat, action) => {
             const { chat } = action;
             return { ...defChat, ...chat };
         }
-        case 'ADD_CHAT_MESSAGE': {
-            const { chatId, msg, id } = action;
+        case 'ADD_CHAT_MEMBER': {
+            const { chatId, member } = action;
+            const member_id = member.id;
             if (state.id === chatId) {
-                const messages = [...state.messages, { ...msg, id }];
+                const members = { ...state.members, [member_id]: member };
+                return { ...state, members };
+            }
+            return state;
+        }
+        case 'ADD_CHAT_MESSAGE': {
+            const { chatId, msg, member } = action;
+            if (state.id === chatId) {
+                const messages = [...state.messages, { ...msg, user: { ...member } }];
                 messages.sort((first, second) => {
                     return first.timestamp > second.timestamp ? 1 : -1;
                 });
