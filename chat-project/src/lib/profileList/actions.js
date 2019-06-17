@@ -1,13 +1,15 @@
 import dbRef from '../dbRef';
 import { generate } from 'shortid';
 import { setActiveChat } from '../chat/actions';
+import stringToColour from '../util/stringToColour';
+
 
 export const addProfile = (userId) => ({ dispatch }) => {
     dbRef
         .child('profiles')
         .on('child_added', d => {
             const id = d.key;
-            const profile = d.val();
+            const profile = {...d.val(), color: stringToColour(id)};
             if (id !== userId) {
                 dispatch({ type: 'ADD_PROFFILE', id, profile });
             }

@@ -7,6 +7,7 @@ import { ListGroup } from 'reactstrap';
 const ProfileList = ({ profileList }) => {
     return (
         <ListGroup>
+            <h2>Users</h2>
 			{profileList.map((profile, index) => (
                 <Profile key={`profile-${index}`} profile={profile} />
             ))}

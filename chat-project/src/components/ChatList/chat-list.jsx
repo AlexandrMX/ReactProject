@@ -5,11 +5,14 @@ import Chat from '../Chat/chat';
 
 const ChatList = ({ chatList }) => {
     return (
-        <ul className="chat-list">
-            {chatList.map((chat, index) => (
-                <Chat key={`chat-${index}`} chat={chat} />
-            ))}
-        </ul>
+        <>
+            <h2>Conversations</h2>
+            <ul className="chat-list">
+                {chatList.map((chat, index) => (
+                    <Chat key={`chat-${index}`} chat={chat} />
+                ))}
+            </ul>
+        </>
     );
 };
 
