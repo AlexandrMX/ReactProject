@@ -5,12 +5,12 @@ import chatList from "./chatList/reducer";
 import profileList from "./profileList/reducer";
 import { customMiddleware } from "./middelware";
 
+const composeEnhancers = (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+
 const store = createStore(
-    combineReducers({profile, activeChat, chatList, profileList}),
+    combineReducers({ profile, activeChat, chatList, profileList }),
     //applyMiddleware(customMiddleware)
-    compose(applyMiddleware(customMiddleware),  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-
-
+    composeEnhancers(applyMiddleware(customMiddleware))
 );
 
 export default store;
