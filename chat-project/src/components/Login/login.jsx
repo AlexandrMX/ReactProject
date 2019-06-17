@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { authUser, onInputChange, setUsername, setPassword } from '../../lib/profile/actions';
-import { runLogin } from '../../lib/profile/actions';
+import { authUser } from '../../lib/profile/actions';
 import classes from './login.module.css';
-import PropTypes from 'prop-types';
 
 
 const Login = ({ onLoginClick }) => {
@@ -34,11 +32,6 @@ const Login = ({ onLoginClick }) => {
     );
 
 }
-// Login.propTypes = {
-//     onInputChange: PropTypes.func,
-//     authUser: PropTypes.func,
-//     username: PropTypes.string.isRequired,
-//     password: PropTypes.string.isRequired
 
 const mapDispatchToProps = dispatch => {
     return {
