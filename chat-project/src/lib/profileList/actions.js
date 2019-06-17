@@ -11,7 +11,7 @@ export const addProfile = (userId) => ({ dispatch }) => {
             if (id !== userId) {
                 dispatch({ type: 'ADD_PROFFILE', id, profile });
             }
-            
+
         }
 
         );
@@ -37,7 +37,9 @@ export const profileSelect = (profile) => ({ dispatch, getState }) => {
             }
             if (!chat) {
                 chat = {
-                    id: generate(),
+                    //id: generate(),
+                    //dirty way to solve conflict on two users starting conversation at same time
+                    id: userId_1 > userId_2 ? userId_1 + userId_2 : userId_2 + userId_1,
                     members: {
                         [userId_1]: true,
                         [userId_2]: true

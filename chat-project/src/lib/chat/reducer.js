@@ -7,7 +7,8 @@ const defChat = {
     draftMessage: {
         user: 'NO_USER_ID',
         text: ''
-    }
+    },
+    chatType: 'user'
 };
 
 
