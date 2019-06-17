@@ -58,8 +58,8 @@ export const logOut = () => ({ dispatch }) => {
         .auth()
         .signOut()
         .then(() => {
-            Cookie.remove('todo_user');
-            Cookie.remove('todo_email');
+            Cookie.remove('chat_user');
+            Cookie.remove('chat_email');
             dispatch({ type: 'LOGGED_OUT' });
         })
         .catch(error => dispatch({ type: 'LOGOUT_ERROR', error }));
