@@ -7,7 +7,6 @@ import { Button } from 'reactstrap';
 const Logout = ({ logOut }) => {
     return (
         <div>
-        	Hello world!
             <Button color="info" className={classes.logout_btn} onClick={logOut}>Logout</Button>
         </div>
     );
