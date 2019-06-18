@@ -1,6 +1,6 @@
 import React from "react";
 import './messages.css';
-import ProfileAvatar from '../ProfileAvatar/profile';
+import ProfileAvatar from '../ProfileAvatar/profile-avatar';
 
 const Messages = ({ messages, currentUserId }) => {
   return (

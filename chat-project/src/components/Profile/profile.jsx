@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { profileSelect } from "../../lib/profileList/actions";
 import { ListGroupItem } from 'reactstrap';
-import ProfileAvatar from '../ProfileAvatar/profile';
+import ProfileAvatar from '../ProfileAvatar/profile-avatar';
 
 const Profile = ({ profile, onProfileSelect }) => {
     return (
-        <ListGroupItem className="profile">
-            <div onClick={onProfileSelect(profile)} >
-                <ProfileAvatar profile={profile} style={{ size: 30}} />
-                {profile.displayName}
-            </div>
+        <ListGroupItem
+            className="profile"
+            onClick={onProfileSelect(profile)}>
+            <ProfileAvatar profile={profile} style={{ size: 30 }} />
+            {profile.displayName}
         </ListGroupItem >
     );
 };

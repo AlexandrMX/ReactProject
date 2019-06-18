@@ -1,8 +1,8 @@
 const defChat = {
     id: "NO_ID",
     messages: [],
-    title: 'NO_TIITLE',
-    lastMessage: 'NO_LAST_MESSAGE',
+    title: '',
+    lastMessage: '',
     members: null,
     draftMessage: {
         user: 'NO_USER_ID',

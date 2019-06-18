@@ -1,5 +1,5 @@
 import dbRef from '../dbRef';
-import { setActiveChat } from '../chat/actions';
+import { setActiveChat, getMemeberInfo } from '../chat/actions';
 
 export const addChat = (userId) => ({ dispatch }) => {
     const createChat = (chat_id, chat_members) => {
@@ -8,7 +8,11 @@ export const addChat = (userId) => ({ dispatch }) => {
             .once('value')
             .then(d => d.val())
             .then(d => {
-                dispatch({ type: 'ADD_CHAT', chat: {...d, members: chat_members }, id: chat_id });
+                dispatch({ type: 'ADD_CHAT', chat: { ...d, members: chat_members }, id: chat_id });
+                Object.keys(chat_members).forEach((m) => dispatch(getMemeberInfo(m, {
+                    type: 'ADD_CHAT_MEMBER_INFO',
+                    id: chat_id
+                })));
             });
     };
     dbRef
@@ -17,7 +21,7 @@ export const addChat = (userId) => ({ dispatch }) => {
             const chat_id = d.key;
             const chat_members = d.val();
             if (chat_members[userId]) {
-                createChat(chat_id,chat_members);
+                createChat(chat_id, chat_members);
             }
         }
 

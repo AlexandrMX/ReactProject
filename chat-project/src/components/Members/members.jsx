@@ -1,6 +1,6 @@
 import React from "react";
 import './members.css';
-import ProfileAvatar from '../ProfileAvatar/profile';
+import ProfileAvatar from '../ProfileAvatar/profile-avatar';
 
 const Members = ({ members, currentUserId }) => {
   return (
@@ -8,7 +8,7 @@ const Members = ({ members, currentUserId }) => {
       <h2>Members</h2>
       {members ? members.map(member => {
         return (
-          <span>
+          <span key={member.id}>
             <ProfileAvatar profile={member} style={{ size: 30 }} />
             {member.displayName}
           </span>
