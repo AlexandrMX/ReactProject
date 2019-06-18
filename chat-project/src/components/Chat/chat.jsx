@@ -23,18 +23,18 @@ const Chat = ({ userId, chat, onChatSelect }) => {
             />
             <div style={{
                 display: 'flex',
-                'flex-direction': 'column',
-                'white-space': 'nowrap',
+                'flexDirection': 'column',
+                'whiteSpace': 'nowrap',
                 'overflow': 'hidden'
             }}>
                 <span style={{
-                    'font-size': 15,
-                    'text-overflow': 'ellipsis',
+                    'fontSize': 15,
+                    'textOverflow': 'ellipsis',
                     'overflow': 'hidden'
                 }}>{chatTitle}</span>
                 <span style={{
-                    'font-size': 10,
-                    'text-overflow': 'ellipsis',
+                    'fontSize': 10,
+                    'textOverflow': 'ellipsis',
                     'overflow': 'hidden'
                 }}>{chat.lastMessage}</span>
             </div>
