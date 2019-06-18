@@ -1,9 +1,6 @@
-.login {
-    margin: 10px;
-    display: flex;
-    justify-content: flex-end;
-}
-.login_title {
-    margin-bottom: 45px;
-    margin-left: 10px;
-}
+.login_form {
+    margin: 20px auto;
+    float:left;
+    margin-left:25%;
+    margin-right:10%;
+ }

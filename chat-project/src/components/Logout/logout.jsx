@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logOut } from '../../lib/profile/actions';
 import classes from './logout.component.css';
+import { Button } from 'reactstrap';
 
 const Logout = ({ logOut }) => {
     return (
         <div>
-            <button className={classes.logout_btn} onClick={logOut}>Logout</button>
+        	Hello world!
+            <Button color="info" className={classes.logout_btn} onClick={logOut}>Logout</Button>
         </div>
     );
 };

@@ -3,6 +3,8 @@ import classes from './content.module.css';
 import ChatList from '../ChatList/chat-list';
 import ProfileList from '../ProfileList/profile-list';
 import ActiveChat from '../ActiveChat/active-chat';
+import Login from '../Login/login';
+import SignUpContainer from '../SignUp/SignUpContainer';
 import { connect } from 'react-redux';
 
 const Content = ({ uid }) => {
@@ -21,7 +23,12 @@ const Content = ({ uid }) => {
                     <ActiveChat />
                 </div>
             </div>
-        ) : <></>
+        ) : (
+            <div>
+                <Login />
+                <SignUpContainer />
+            </div>
+        )
     );
 };
 
