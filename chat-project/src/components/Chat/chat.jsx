@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { chatSelect } from "../../lib/chatList/actions";
-import { ListGroupItem } from 'reactstrap';
+import { DropdownItem } from 'reactstrap';
 import Avatar from 'react-avatar';
 
 const Chat = ({ userId, chat, onChatSelect }) => {
@@ -14,7 +14,7 @@ const Chat = ({ userId, chat, onChatSelect }) => {
     });
     const chatTitle = chat.title ? chat.title : membersList;
     return (
-        <ListGroupItem className="chat" onClick={onChatSelect(chat)} style={{ display: 'flex' }}>
+        <DropdownItem className="chat" onClick={onChatSelect(chat)} style={{ display: 'flex' }}>
             <Avatar
                 name={chatTitle}
                 round={false}
@@ -39,7 +39,7 @@ const Chat = ({ userId, chat, onChatSelect }) => {
                 }}>{chat.lastMessage}</span>
             </div>
 
-        </ListGroupItem>
+        </DropdownItem>
     );
 };
 
